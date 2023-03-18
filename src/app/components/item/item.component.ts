@@ -1,5 +1,5 @@
 import { Item } from 'src/app/interfaces/iItem';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,11 +9,16 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class ItemComponent implements OnInit {
   @Input() item!: Item;
+  @Output() changeItem = new EventEmitter();
   faPen = faPen;
   faTrash = faTrash
 
   constructor() { }
 
   ngOnInit(): void { }
+
+  public editar(): void {
+    this.changeItem.emit(this.item);
+  }
 
 }

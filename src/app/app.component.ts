@@ -10,8 +10,13 @@ import { ListaDeCompraService } from "./service/lista-de-compra.service";
 export class AppComponent {
   title = "app-lista-de-compras";
   public listaItens!: Array<Item>;
+  public itemParaEditar!: Item;
 
   constructor(private listaDeCompraService: ListaDeCompraService) {
     this.listaItens = listaDeCompraService.getListaDeCompra();
+  }
+
+  setItemEdit(item: Item): void {
+    this.itemParaEditar = item;
   }
 }
