@@ -50,5 +50,11 @@ export class ListaDeCompraService {
     const newItem = this.createItem(name);
     this.listaDeCompra.push(newItem);
   }
+
+  public editItem(item: Item, nome: string): void {
+    item.nome = nome;
+    const id = item.id;
+    this.listaDeCompra.splice(Number(id)-1,1,item);
+  }
   
 }
