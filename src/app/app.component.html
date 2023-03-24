@@ -1,12 +1,16 @@
 <section class="main">
-  <app-input [itemParaEditarInput]="itemParaEditar">
-  </app-input>
+  <app-input [itemParaEditarInput]="itemParaEditar"> </app-input>
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
-      <div *ngFor="let item of listaItens">
-        <app-item [item]="item" (changeItem)="setItemEdit($event)"></app-item>
+      <div *ngIf="listaItens.length !== 0; else notItems">
+        <div *ngFor="let item of listaItens">
+          <app-item [item]="item" (changeItem)="setItemEdit($event)"></app-item>
+        </div>
       </div>
+      <ng-template #notItems>
+        <small> Nenhum item cadastrado </small>
+      </ng-template>
     </div>
   </div>
 </section>
