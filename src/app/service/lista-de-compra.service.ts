@@ -44,5 +44,9 @@ export class ListaDeCompraService {
     const id = item.id;
     this.listaDeCompra.splice(Number(id)-1,1,item);
   }
+
+  public updateListLocalStorage(): void {
+    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
+  }
   
 }
