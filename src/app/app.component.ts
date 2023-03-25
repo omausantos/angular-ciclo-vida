@@ -27,6 +27,7 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   public clearList(): void {
-    this.listaItens = []
+    this.listaItens = [];
+    this.listaDeCompraService.deleteAll();
   }
 }
