@@ -22,7 +22,12 @@ export class AppComponent implements OnInit, DoCheck {
     this.listaItens = this.listaDeCompraService.getListaDeCompra();
   }
 
-  setItemEdit(item: Item): void {
+  public setItemEdit(item: Item): void {
     this.itemParaEditar = item;
+  }
+
+  public clearList(): void {
+    this.listaItens = [];
+    this.listaDeCompraService.deleteAll();
   }
 }

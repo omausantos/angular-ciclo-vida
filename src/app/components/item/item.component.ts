@@ -26,4 +26,9 @@ export class ItemComponent implements OnInit {
     this.item.comprado = !this.item.comprado;
     this.listaDeCompraService.editItemComplete(this.item);
   }
+
+  public deleteItem(): void {
+    const id = Number(this.item.id);
+    this.listaDeCompraService.deletarItem(id);
+  }
 }
