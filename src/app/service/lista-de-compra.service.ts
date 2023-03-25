@@ -1,11 +1,10 @@
-import { Item } from 'src/app/interfaces/iItem';
-import { Injectable } from '@angular/core';
+import { Item } from "src/app/interfaces/iItem";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ListaDeCompraService {
-
   private listaDeCompra: Item[] = [
     // {
     //   "id": 1,
@@ -13,13 +12,13 @@ export class ListaDeCompraService {
     //   "data": "Segunda-feira (31/10/2022) às 08:30",
     //   "comprado": false
     // },
-  ]
+  ];
 
   constructor() {
-    this.listaDeCompra = JSON.parse(localStorage.getItem('itens') || '[]');
+    this.listaDeCompra = JSON.parse(localStorage.getItem("itens") || "[]");
   }
 
-  getListaDeCompra(){
+  getListaDeCompra() {
     return this.listaDeCompra;
   }
 
@@ -28,11 +27,11 @@ export class ListaDeCompraService {
     const newItem: Item = {
       id: index,
       nome: name,
-      data: new Date().toLocaleTimeString('pt-BR'),
-      comprado: false
-    }
+      data: new Date().toLocaleTimeString("pt-BR"),
+      comprado: false,
+    };
     return newItem;
-  };
+  }
 
   public includeItemForList(name: string): void {
     const newItem = this.createItem(name);
@@ -41,12 +40,15 @@ export class ListaDeCompraService {
 
   public editItem(item: Item, nome: string): void {
     item.nome = nome;
+    this.editItemComplete(item);
+  }
+
+  public editItemComplete(item: Item): void {
     const id = item.id;
-    this.listaDeCompra.splice(Number(id)-1,1,item);
+    this.listaDeCompra.splice(Number(id) - 1, 1, item);
   }
 
   public updateListLocalStorage(): void {
-    localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
+    localStorage.setItem("itens", JSON.stringify(this.listaDeCompra));
   }
-  
 }
